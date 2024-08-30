@@ -332,6 +332,40 @@ public class v_iniciar extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private boolean verificarGanador(int jugador) {
+
+        for (int contadorFila = 0; contadorFila < 3; contadorFila++) {
+            if (juegoArreglo[contadorFila][0] == jugador && juegoArreglo[contadorFila][1] == jugador && juegoArreglo[contadorFila][2] == jugador) {
+                return true;
+            }
+        }
+
+        for (int contadorColumnas = 0; contadorColumnas < 3; contadorColumnas++) {
+            if (juegoArreglo[0][contadorColumnas] == jugador && juegoArreglo[1][contadorColumnas] == jugador && juegoArreglo[2][contadorColumnas] == jugador) {
+                return true;
+            }
+        }
+
+        if (juegoArreglo[0][0] == jugador && juegoArreglo[1][1] == jugador && juegoArreglo[2][2] == jugador) {
+            return true;
+        }
+        if (juegoArreglo[0][2] == jugador && juegoArreglo[1][1] == jugador && juegoArreglo[2][0] == jugador) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean verificarEmpate() {
+        for (int contadorEmpateF = 0; contadorEmpateF < 3; contadorEmpateF++) {
+            for (int contadorEmpateC = 0; contadorEmpateC < 3; contadorEmpateC++) {
+                if (juegoArreglo[contadorEmpateF][contadorEmpateC] == 0) { // Si hay al menos un espacio vacío, no es empate
+                    return false;
+                }
+            }
+        }
+        return true; // Si todos los espacios están llenos y no hay ganador, es empate
+    }
+
 
     private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
         // TODO add your handling code here:
@@ -339,7 +373,7 @@ public class v_iniciar extends javax.swing.JFrame {
 
     private void registrarXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarXActionPerformed
         String numeroXF = filaXinput.getText();
-        String numeroXC = filaXinput.getText();
+        String numeroXC = columnaXinput.getText();
         try {
             int filaX = Integer.parseInt(numeroXF);
             int columnaX = Integer.parseInt(numeroXC);
@@ -353,7 +387,13 @@ public class v_iniciar extends javax.swing.JFrame {
                 System.out.println("Ya esta llena");
             } else {
                 juegoArreglo[filaX][columnaX] = llenoX;
-                System.out.println("se lleno");
+                if (verificarGanador(llenoX)) {
+                    System.out.println("¡Jugador X ha ganado!");
+                } else if (verificarEmpate()) {
+                    System.out.println("¡Es un empate!");
+                } else {
+                    System.out.println("se lleno");
+                }
             }
 
         } catch (NumberFormatException e) {
@@ -377,10 +417,17 @@ public class v_iniciar extends javax.swing.JFrame {
                 System.out.println("Ya esta llena");
             } else {
                 juegoArreglo[fila0][columna0] = lleno0;
-                System.out.println("se lleno");
+                if (verificarGanador(lleno0)) {
+                    System.out.println("¡Jugador 0 ha ganado!");
+                    this.dispose();
+                } else if (verificarEmpate()) {
+                    System.out.println("¡Es un empate!");
+                } else {
+                    System.out.println("Se llenó");
+                }
             }
-
         } catch (NumberFormatException e) {
+
             System.out.println("Ingrese de nuevo un numero valido");
         }
 
@@ -424,5 +471,4 @@ public class v_iniciar extends javax.swing.JFrame {
     private javax.swing.JButton registrar0;
     private javax.swing.JButton registrarX;
     // End of variables declaration//GEN-END:variables
-
 }
