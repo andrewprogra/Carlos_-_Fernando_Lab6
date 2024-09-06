@@ -141,9 +141,9 @@ String nom1;
         V_xo v1=new V_xo();
        dispose();
        
-       String num=p_1.getText();
+       String jugador1=p_1.getText();
       
-       String num2=p_2.getText();
+       String jugaddor2=p_2.getText();
        
     }//GEN-LAST:event_btn_inicarMouseClicked
 

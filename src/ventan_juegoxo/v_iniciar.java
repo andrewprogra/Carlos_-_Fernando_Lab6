@@ -4,6 +4,7 @@
  */
 package ventan_juegoxo;
 
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,15 +13,89 @@ import javax.swing.JOptionPane;
  */
 public class v_iniciar extends javax.swing.JFrame {
 
-    int[][] juegoArreglo = new int[3][3];
-    int llenoX = 1;
-    int lleno0 = 2;
+    JLabel juegoArreglo[][] = new JLabel[3][3];
+    String llenoX = JOptionPane.showInputDialog("player X: ");
+    String lleno0 = JOptionPane.showInputDialog("player O: ");
+    int contadorJuego = 0;
+    String ganador = "";
+    String jugardoXO = "X";
+    int posFila;
+    int posColumna;
+    nombreX.setText(nombreX);
 
     /**
      * Creates new form v_iniciar
      */
     public v_iniciar() {
-        initComponents();
+        juegoArreglo[0][0] = posicion0_0;
+        juegoArreglo[0][1] = posicion0_1;
+        juegoArreglo[0][2] = posicion0_2;
+        //filas 1
+        juegoArreglo[1][0] = posicion1_0;
+        juegoArreglo[1][1] = posicion1_1;
+        juegoArreglo[1][2] = posicion1_2;
+        //filas 2
+        juegoArreglo[2][0] = posicion2_0;
+        juegoArreglo[2][1] = posicion2_1;
+        juegoArreglo[2][2] = posicion2_2;
+
+    }
+
+    boolean respuestas() {
+        if (contadorJuego > 4) {
+            if ((juegoArreglo[0][0].getText().equals("X") || !juegoArreglo[0][1].getText().equals("X")) || !juegoArreglo[0][2].getText().equals("X")) {
+                if (juegoArreglo[0][0].getText().equals("O") && juegoArreglo[0][1].getText().equals("O") && juegoArreglo[0][2].getText().equals("O")) {
+                    ganador = "O";
+                    return true;
+                } else if (juegoArreglo[0][0].getText().equals("X") && juegoArreglo[1][0].getText().equals("X") && juegoArreglo[2][0].getText().equals("X")) {
+                    ganador = "X";
+                    return true;
+                } else if (juegoArreglo[0][0].getText().equals("O") && juegoArreglo[1][0].getText().equals("O") && juegoArreglo[2][0].getText().equals("O")) {
+                    ganador = "O";
+                    return true;
+                } else if (juegoArreglo[0][1].getText().equals("X") && juegoArreglo[1][1].getText().equals("X") && juegoArreglo[2][1].getText().equals("X")) {
+                    ganador = "X";
+                    return true;
+                } else if (juegoArreglo[0][1].getText().equals("O") && juegoArreglo[1][1].getText().equals("O") && juegoArreglo[2][1].getText().equals("O")) {
+                    ganador = "O";
+                    return true;
+                } else if (juegoArreglo[0][2].getText().equals("X") && juegoArreglo[1][2].getText().equals("X") && juegoArreglo[2][2].getText().equals("X")) {
+                    ganador = "X";
+                    return true;
+                } else if (juegoArreglo[0][2].getText().equals("O") && juegoArreglo[1][2].getText().equals("O") && juegoArreglo[2][2].getText().equals("O")) {
+                    ganador = "O";
+                    return true;
+                } else if (juegoArreglo[1][0].getText().equals("X") && juegoArreglo[1][1].getText().equals("X") && juegoArreglo[1][2].getText().equals("X")) {
+                    ganador = "X";
+                    return true;
+                } else if (juegoArreglo[1][0].getText().equals("O") && juegoArreglo[1][1].getText().equals("O") && juegoArreglo[1][2].getText().equals("O")) {
+                    ganador = "O";
+                    return true;
+                } else if (juegoArreglo[2][0].getText().equals("X") && juegoArreglo[2][1].getText().equals("X") && juegoArreglo[2][2].getText().equals("X")) {
+                    ganador = "X";
+                    return true;
+                } else if (juegoArreglo[2][0].getText().equals("O") && juegoArreglo[2][1].getText().equals("O") && juegoArreglo[2][2].getText().equals("O")) {
+                    ganador = "O";
+                    return true;
+                } else if (juegoArreglo[0][0].getText().equals("X") && juegoArreglo[1][1].getText().equals("X") && juegoArreglo[2][2].getText().equals("X")) {
+                    ganador = "X";
+                    return true;
+                } else if (juegoArreglo[0][0].getText().equals("O") && juegoArreglo[1][1].getText().equals("O") && juegoArreglo[2][2].getText().equals("O")) {
+                    ganador = "O";
+                    return true;
+                } else if (juegoArreglo[0][2].getText().equals("X") && juegoArreglo[1][1].getText().equals("X") && juegoArreglo[2][0].getText().equals("X")) {
+                    ganador = "X";
+                    return true;
+                } else if (juegoArreglo[0][2].getText().equals("O") && juegoArreglo[1][1].getText().equals("O") && juegoArreglo[2][0].getText().equals("O")) {
+                    ganador = "O";
+                    return true;
+                } else {
+                    ganador = "X";
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -41,32 +116,23 @@ public class v_iniciar extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        nombre1 = new javax.swing.JTextField();
+        nombreX = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        filaXinput = new javax.swing.JTextField();
+        filainput = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        columnaXinput = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel12 = new javax.swing.JLabel();
-        nombre2 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        input0Fila = new javax.swing.JTextField();
-        input0Columna = new javax.swing.JTextField();
-        registrarX = new javax.swing.JButton();
-        registrar0 = new javax.swing.JButton();
+        columnainput = new javax.swing.JTextField();
+        registrarAccion = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
+        nombreO = new javax.swing.JLabel();
+        posicion0_0 = new javax.swing.JLabel();
+        posicion2_0 = new javax.swing.JLabel();
+        posicion1_2 = new javax.swing.JLabel();
+        posicion2_2 = new javax.swing.JLabel();
+        posicion1_1 = new javax.swing.JLabel();
+        posicion0_2 = new javax.swing.JLabel();
+        posicion0_1 = new javax.swing.JLabel();
+        posicion1_0 = new javax.swing.JLabel();
+        posicion2_1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,175 +154,93 @@ public class v_iniciar extends javax.swing.JFrame {
 
         jLabel9.setText("2");
 
-        jLabel2.setText("jugador 1 :");
-
-        nombre1.setEditable(false);
-        nombre1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombre1ActionPerformed(evt);
-            }
-        });
+        nombreX.setText("jugador 1 :");
 
         jLabel10.setText("fila:");
 
         jLabel11.setText("columna:");
 
-        jLabel12.setText("jugador 2:");
-
-        nombre2.setEditable(false);
-        nombre2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombre2ActionPerformed(evt);
-            }
-        });
-
-        jLabel13.setText("ingrese pocision de 0:");
-
-        jLabel14.setText("fila:");
-
-        jLabel15.setText("columna:");
-
-        registrarX.setText("ingresar");
-        registrarX.addMouseListener(new java.awt.event.MouseAdapter() {
+        registrarAccion.setText("ingresar");
+        registrarAccion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                registrarXMouseClicked(evt);
+                registrarAccionMouseClicked(evt);
             }
         });
-        registrarX.addActionListener(new java.awt.event.ActionListener() {
+        registrarAccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registrarXActionPerformed(evt);
+                registrarAccionActionPerformed(evt);
             }
         });
 
-        registrar0.setText("ingresar");
-        registrar0.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                registrar0MouseClicked(evt);
-            }
-        });
-        registrar0.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registrar0ActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Ingrese pocision de X:");
+        nombreO.setText("jugador 2 :");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(registrarAccion)
+                .addGap(20, 20, 20))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addGap(23, 157, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(24, 24, 24)
+                                    .addComponent(filainput, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nombreX)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(12, 12, 12)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(columnaXinput, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                                            .addComponent(filaXinput))
-                                        .addGap(28, 28, 28)
-                                        .addComponent(registrarX))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(nombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(input0Columna, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(input0Fila, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(registrar0)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(columnainput, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(nombreO))
+                        .addContainerGap(124, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
+                .addComponent(nombreX)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(nombreO)
+                .addGap(55, 55, 55)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel10)
-                            .addComponent(filaXinput, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(columnaXinput))
-                        .addGap(18, 18, 18)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(nombre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel13)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel14)
-                                    .addComponent(input0Fila, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel15)
-                                    .addComponent(input0Columna, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(registrar0)
-                                .addGap(46, 46, 46))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(registrarX)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(jLabel10)
+                    .addComponent(filainput, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(registrarAccion)
+                .addGap(5, 5, 5)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(columnainput, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        posicion0_0.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        posicion2_0.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        posicion1_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel25.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        posicion2_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel26.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        posicion1_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel29.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        posicion0_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel30.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        posicion0_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel31.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        posicion1_0.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel27.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        posicion2_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -273,22 +257,22 @@ public class v_iniciar extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(posicion0_0, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(posicion0_1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(posicion2_0, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(posicion2_1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(posicion1_0, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(posicion1_1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(posicion1_2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(posicion2_2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(posicion0_2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -318,24 +302,25 @@ public class v_iniciar extends javax.swing.JFrame {
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(posicion0_0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(posicion0_1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(posicion0_2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(posicion1_1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(posicion1_2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(posicion1_0, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(6, 6, 6)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(posicion2_1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(posicion2_0, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(posicion2_2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(71, 71, 71))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -356,148 +341,65 @@ public class v_iniciar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void registrar0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrar0ActionPerformed
-
-        String numero0F = input0Fila.getText();
-        String numero0C = input0Columna.getText();
-        try {
-            int fila0 = Integer.parseInt(numero0F);
-            int columna0 = Integer.parseInt(numero0C);
-            if ((fila0 < 0 || columna0 < 0) || (fila0 > 2 || columna0 > 2)) {
-               JOptionPane.showMessageDialog(null,"ingrese un valor dentro del arreglo");
-                return;
-
-            }
-            if (juegoArreglo[fila0][columna0] == 1 || juegoArreglo[fila0][columna0] == 2) {
-                JOptionPane.showMessageDialog(null,"Ya esta llena");
-            } else {
-                juegoArreglo[fila0][columna0] = lleno0;
-                if (verificarGanador(lleno0)) {
-                     JOptionPane.showMessageDialog(null, "¡Jugador 0 ha ganado!"); 
-                    this.dispose();
-                } else if (verificarEmpate()) {
-                    JOptionPane.showMessageDialog(null, "¡Es un empate!");
-                } else {
-                    JOptionPane.showMessageDialog(null,"Se llenó");
-                }
-            }
-        } catch (NumberFormatException e) {
-
-           JOptionPane.showMessageDialog(null,"Ingrese de nuevo un numero valido");
-        }
-    }//GEN-LAST:event_registrar0ActionPerformed
-
-    private void registrarXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarXActionPerformed
-        String numeroXF = filaXinput.getText();
-        String numeroXC = columnaXinput.getText();
-        try {
-            int filaX = Integer.parseInt(numeroXF);
-            int columnaX = Integer.parseInt(numeroXC);
-            if ((filaX < 0 || columnaX < 0) || (filaX > 2 || columnaX > 2)) {
-                JOptionPane.showMessageDialog(null,"ingrese un valor dentro del arreglo");
-                return;
-
-            }
-            if (juegoArreglo[filaX][columnaX] == 1 || juegoArreglo[filaX][columnaX] == 2) {
-
-              JOptionPane.showMessageDialog(null,"Ya esta llena");
-            } else {
-                juegoArreglo[filaX][columnaX] = llenoX;
-                if (verificarGanador(llenoX)) {
-                   JOptionPane.showMessageDialog(null, "¡Jugador X ha ganado!"); 
-                } else if (verificarEmpate()) {
-                   JOptionPane.showMessageDialog(null, "¡Es un empate!");
-                } else {
-                     JOptionPane.showMessageDialog(null,"Se llenó");
-                }
-            }
-
-        } catch (NumberFormatException e) {
-           JOptionPane.showMessageDialog(null,"Ingrese de nuevo un numero valido");
-        }
-    }//GEN-LAST:event_registrarXActionPerformed
-
-    private void nombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre2ActionPerformed
-
-    }//GEN-LAST:event_nombre2ActionPerformed
-
-    private void nombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre1ActionPerformed
-    
+    private void registrarAccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarAccionActionPerformed
+        try{
+        posFila = Integer.parseInt(filainput.getText());
+        posColumna = Integer.parseInt(columnainput.getText());
         
-     
-
-    }//GEN-LAST:event_nombre1ActionPerformed
-
-    private void registrarXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarXMouseClicked
-        if(filaXinput.getText().equals("")||columnaXinput.getText().equals("")){
-        JOptionPane.showMessageDialog(null,"Error debe de llenar todos los campos");
+        }catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Ingrese de nuevo un numero valido");
+            return;
         }
-    }//GEN-LAST:event_registrarXMouseClicked
-
-    private void registrar0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrar0MouseClicked
-       if(input0Fila.getText().equals("")||input0Columna.getText().equals("")){
-         JOptionPane.showMessageDialog(null,"Error debe de llenar todos los campos");
-       }
-    }//GEN-LAST:event_registrar0MouseClicked
-    private boolean verificarGanador(int jugador) {
-
-        for (int contadorFila = 0; contadorFila < 3; contadorFila++) {
-            if (juegoArreglo[contadorFila][0] == jugador && juegoArreglo[contadorFila][1] == jugador && juegoArreglo[contadorFila][2] == jugador) {
-                return true;
+        if ((posFila < 0 || posColumna < 0) || (posFila > 2 || posColumna > 2)) {
+                JOptionPane.showMessageDialog(null, "ingrese un valor dentro del arreglo");
             }
+        if (filainput.getText() == null) {
+            JOptionPane.showMessageDialog(null, "Ingrese valor en filas");
+        } else if (columnainput.getText() == null) {
+            JOptionPane.showMessageDialog(null, "Ingrese valor en columna ");
+        }
+        //si es distinto a vacio
+        if (!juegoArreglo[posFila][posColumna].getText().equals("")) {
+            filainput.setText("");
+            columnainput.setText("");
+            JOptionPane.showMessageDialog(null, "Posicion no valida");
+            return;
         }
 
-        for (int contadorColumnas = 0; contadorColumnas < 3; contadorColumnas++) {
-            if (juegoArreglo[0][contadorColumnas] == jugador && juegoArreglo[1][contadorColumnas] == jugador && juegoArreglo[2][contadorColumnas] == jugador) {
-                return true;
-            }
+        juegoArreglo[posFila][posColumna].setText(jugardoXO);
+        jugardoXO = (jugardoXO.equals("X")) ? "O" : "X";
+        filainput.setText("");
+        columnainput.setText("");
+        contadorJuego++;
+        if (9 == contadorJuego) {
+            JOptionPane.showMessageDialog(null, "EMPATE");
+            this.dispose();
+        }
+        ganador = (ganador.equalsIgnoreCase("X")) ? nombreX : nombreO;
+        if (respuestas()) {
+            JOptionPane.showMessageDialog(null, "Ganaste " + ganador);
+            this.dispose();
         }
 
-        if (juegoArreglo[0][0] == jugador && juegoArreglo[1][1] == jugador && juegoArreglo[2][2] == jugador) {
-            return true;
-        }
-        if (juegoArreglo[0][2] == jugador && juegoArreglo[1][1] == jugador && juegoArreglo[2][0] == jugador) {
-            return true;
-        }
-        return false;
-    }
+    }//GEN-LAST:event_registrarAccionActionPerformed
 
-    private boolean verificarEmpate() {
-        for (int contadorEmpateF = 0; contadorEmpateF < 3; contadorEmpateF++) {
-            for (int contadorEmpateC = 0; contadorEmpateC < 3; contadorEmpateC++) {
-                if (juegoArreglo[contadorEmpateF][contadorEmpateC] == 0) { // Si hay al menos un espacio vacío, no es empate
-                    return false;
-                }
-            }
+    private void registrarAccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarAccionMouseClicked
+        if (filainput.getText().equals("") || columnainput.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Error debe de llenar todos los campos");
         }
-        return true; // Si todos los espacios están llenos y no hay ganador, es empate
-    }
+        if (filainput.getText().equals(1) && columnainput.getText().equals(1)) {
 
+        }
+    }//GEN-LAST:event_registrarAccionMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField columnaXinput;
-    private javax.swing.JTextField filaXinput;
-    private javax.swing.JTextField input0Columna;
-    private javax.swing.JTextField input0Fila;
+    private javax.swing.JTextField columnainput;
+    private javax.swing.JTextField filainput;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -506,10 +408,18 @@ public class v_iniciar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField nombre1;
-    private javax.swing.JTextField nombre2;
-    private javax.swing.JButton registrar0;
-    private javax.swing.JButton registrarX;
+    private javax.swing.JLabel nombreO;
+    private javax.swing.JLabel nombreX;
+    private javax.swing.JLabel posicion0_0;
+    private javax.swing.JLabel posicion0_1;
+    private javax.swing.JLabel posicion0_2;
+    private javax.swing.JLabel posicion1_0;
+    private javax.swing.JLabel posicion1_1;
+    private javax.swing.JLabel posicion1_2;
+    private javax.swing.JLabel posicion2_0;
+    private javax.swing.JLabel posicion2_1;
+    private javax.swing.JLabel posicion2_2;
+    private javax.swing.JButton registrarAccion;
     // End of variables declaration//GEN-END:variables
+
 }
